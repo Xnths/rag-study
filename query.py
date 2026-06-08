@@ -15,7 +15,7 @@ vectorstore = FAISS.load_local(
     embeddings,
     allow_dangerous_deserialization=True
 )
-retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
+retriever = vectorstore.as_retriever(search_kwargs={"k": 6})
 
 def format_docs(docs):
     return "\n\n".join(d.page_content for d in docs)
@@ -42,9 +42,8 @@ chain = (
 )
 
 queries = [
-    "What is FAISS used for?",
-    "How does fine-tuning work?",
-    "What is the capital of Brazil?",
+    "What is the difference between RAG-Sequence and RAG-Token?",
+    "How does DPR retrieve documents?",
 ]
 
 for q in queries:

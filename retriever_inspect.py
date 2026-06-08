@@ -12,14 +12,12 @@ vectorstore = FAISS.load_local(
 retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
 
 queries = [
-    "How does the encoder work?",
-    "What is FAISS used for?",
-    "What is the capital of Brazil?",
-    "How does fine-tuning work?",
+    "What is the difference between RAG-Sequence and RAG-Token?",
+    "How does DPR retrieve documents?",
 ]
 
 for q in queries:
     print(f"\nQuery: {q}")
     results = retriever.invoke(q)
     for r in results:
-        print(f"  [{r.metadata['index']}] {r.page_content}")
+        print(f"  [page {r.metadata['page']}] {r.page_content[:150]}")
